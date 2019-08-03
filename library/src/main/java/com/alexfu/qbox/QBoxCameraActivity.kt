@@ -65,7 +65,7 @@ class QBoxCameraActivity : AppCompatActivity() {
     private fun updateViewFinder(output: Preview.PreviewOutput) {
         val parent = viewFinder.parent as ViewGroup
         parent.removeView(viewFinder)
-        parent.addView(viewFinder)
+        parent.addView(viewFinder, 0)
         viewFinder.surfaceTexture = output.surfaceTexture
     }
 
