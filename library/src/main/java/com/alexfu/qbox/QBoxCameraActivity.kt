@@ -1,10 +1,9 @@
 package com.alexfu.qbox
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
-import android.os.HandlerThread
+import android.os.*
 import android.util.Rational
 import android.util.Size
 import android.view.TextureView
@@ -20,6 +19,7 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
 
 private const val KEY_BARCODE = "barcode"
+private const val VIBRATE_DURATION = 200L
 
 class QBoxCameraActivity : AppCompatActivity(), BarcodeDetectionCallback {
     private val viewFinder by lazy<TextureView> { findViewById(R.id.com_alexfu_qbox__view_finder) }
@@ -51,8 +51,8 @@ class QBoxCameraActivity : AppCompatActivity(), BarcodeDetectionCallback {
     }
 
     override fun onBarcodeDetected(barcodes: List<FirebaseVisionBarcode>) {
+        vibrate()
         val barcode = QBoxBarcode(barcodes.first())
-
         val data = Intent()
         data.putExtra(KEY_BARCODE, barcode)
         setResult(Activity.RESULT_OK, data)
@@ -70,6 +70,26 @@ class QBoxCameraActivity : AppCompatActivity(), BarcodeDetectionCallback {
         parent.removeView(viewFinder)
         parent.addView(viewFinder, 0)
         viewFinder.surfaceTexture = output.surfaceTexture
+    }
+
+    private fun vibrate() {
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(VIBRATE_DURATION, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(VIBRATE_DURATION)
+        }
+    }
+
+    companion object {
+        fun start(activity: Activity, requestCode: Int) {
+            val intent = Intent(activity, QBoxCameraActivity::class.java)
+            activity.startActivityForResult(intent, requestCode)
+        }
+
+        fun getBarcode(data: Intent?): QBoxBarcode {
+            return data?.getSerializableExtra(KEY_BARCODE) as? QBoxBarcode ?: QBoxBarcode()
+        }
     }
 }
 

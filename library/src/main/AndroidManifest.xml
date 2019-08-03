@@ -2,6 +2,8 @@
     package="com.alexfu.qbox">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application>
         <activity
             android:name=".QBoxCameraActivity"
