@@ -21,7 +21,7 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
 private const val KEY_BARCODE = "barcode"
 private const val VIBRATE_DURATION = 200L
 
-class QBoxCameraActivity : AppCompatActivity(), BarcodeDetectionCallback {
+class QBoxCamera : AppCompatActivity(), BarcodeDetectionCallback {
     private val viewFinder by lazy<TextureView> { findViewById(R.id.com_alexfu_qbox__view_finder) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,7 +83,7 @@ class QBoxCameraActivity : AppCompatActivity(), BarcodeDetectionCallback {
 
     companion object {
         fun start(activity: Activity, requestCode: Int) {
-            val intent = Intent(activity, QBoxCameraActivity::class.java)
+            val intent = Intent(activity, QBoxCamera::class.java)
             activity.startActivityForResult(intent, requestCode)
         }
 

@@ -6,7 +6,7 @@
 
     <application>
         <activity
-            android:name=".QBoxCameraActivity"
+            android:name=".QBoxCamera"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
