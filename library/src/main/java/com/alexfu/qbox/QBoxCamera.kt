@@ -10,6 +10,8 @@ import android.view.TextureView
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
@@ -85,6 +87,11 @@ class QBoxCamera : AppCompatActivity(), BarcodeDetectionCallback {
         fun start(activity: Activity, requestCode: Int) {
             val intent = Intent(activity, QBoxCamera::class.java)
             activity.startActivityForResult(intent, requestCode)
+        }
+
+        fun start(fragment: Fragment, requestCode: Int) {
+            val intent = Intent(fragment.requireContext(), QBoxCamera::class.java)
+            fragment.startActivityForResult(intent, requestCode)
         }
 
         fun getBarcode(data: Intent?): QBoxBarcode {
