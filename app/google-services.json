@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "782876578256",
+    "firebase_url": "https://qbox-dc368.firebaseio.com",
+    "project_id": "qbox-dc368",
+    "storage_bucket": "qbox-dc368.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782876578256:android:44aa87a03dd896c4",
+        "android_client_info": {
+          "package_name": "com.alexfu.qbox.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782876578256-j6eo5rlp3fjghqufbt5s7326hcvdfrng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTxJg1zcaud2LuzbQh6bx3CRJSc0uBmMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782876578256-j6eo5rlp3fjghqufbt5s7326hcvdfrng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

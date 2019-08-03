@@ -3,5 +3,10 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <application>
         <activity android:name=".QBoxCameraActivity" android:screenOrientation="portrait" />
+
+        <!-- Automatically download the ML model to the device -->
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="barcode" />
     </application>
 </manifest>
